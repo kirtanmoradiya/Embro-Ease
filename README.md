@@ -1,149 +1,284 @@
-# Embro-Ease
-
-
-Here's a refined version of the documentation with a focus on the design perspective:
+Absolutely, Kirtan! Below is a **more detailed and structured version** of your system documentation, along with **additional pages and deeper explanations** from both a functionality and design perspective.
 
 ---
 
-## **System Documentation for Company Management Panel**
+# 🌟 **Embro-Ease: Company Management Panel Documentation**
+
+A comprehensive management system for embroidery business operations across multiple roles and access levels.
 
 ---
 
-### **◉ Role Definitions**
+## 🔸 1. Role Definitions
 
-1. **Super Admin**
-   - Manages all companies (access-based).
-   - Controls Prime bases and assigns Admins accordingly.
+### 🔹 **Super Admin**
 
-2. **Admin**
-   - Manages specific companies (Prime base dependent).
-   - Oversees operations, entries, and reports.
+* **Responsibilities:**
 
-3. **Assistant**
-   - Assists with specific company operations.
-   - Limited access, focused on product and design data handling.
+  * Full access to system functionalities.
+  * Manage and assign Admins to Prime bases.
+  * Control billing types, design categories, and machine mappings.
+  * View and generate all reports.
+* **Special Access:**
 
-4. **Employee**
-   - Minimal access for operational tasks.
-   - No dashboard or management functionality.
+  * Prime Base Management.
+  * Global configuration controls (Billing Types, Product Categories, Party Types, etc.).
 
----
+### 🔹 **Admin**
 
-### **◉ Role Permissions**
+* **Responsibilities:**
 
-| **Feature**        | **Super Admin** | **Admin**       | **Assistant** | **Employee** |
-| ------------------ | --------------- | --------------- | ------------- | ------------ |
-| Login              | ✔               | ✔               | ✔             | ✔            |
-| Dashboard Access   | All Companies   | Prime Companies | One Company   | No Access    |
-| Manage Companies   | ✔               | ✔               | ✖             | ✖            |
-| Add Machines       | ✔               | ✔               | ✖             | ✖            |
-| View Reports       | ✔               | ✔               | ✔             | ✖            |
-| Manage Products    | ✔               | ✔               | ✔             | ✖            |
-| Manage Design Data | ✔               | ✔               | ✔             | ✖            |
-| Manage Party Info  | ✔               | ✔               | ✖             | ✖            |
-| Bill Management    | ✔               | ✔               | ✖             | ✖            |
-| Receive Entries    | ✔               | ✔               | ✖             | ✖            |
-| Delivery Entries   | ✔               | ✔               | ✖             | ✖            |
+  * Manage company operations assigned under their Prime Base.
+  * Add/Edit/Delete entries for products, machines, design data, etc.
+  * Oversee all assistant activities.
+* **Prime Base Access Rule:**
 
----
+  * Prime Level 1 → 1 Company
+  * Prime Level 2 → 3 Companies
+  * Prime Level 3 → 5-7 Companies
 
-### **◉ Panel Details**
+### 🔹 **Assistant**
 
-#### **Super Admin Panel**
-1. **Login Page**
-2. **Home / Dashboard**
-   - Displays all companies based on access level.
-3. **Prime Base Management**
-   - Manage companies assigned to each Prime base:
-     - **1 Prime** → **1 Company**
-     - **2 Prime** → **3 Companies**
-     - **3 Prime** → **5-7 Companies**
+* **Responsibilities:**
+
+  * View and assist with product, design, and machine data.
+  * Notify Admin for actions like machine assignment.
+  * Limited to single company operations.
+
+### 🔹 **Employee**
+
+* **Responsibilities:**
+
+  * Operational role only (i.e., actual production/entry tasks).
+  * No access to dashboards or editable data.
+  * Possible usage on dedicated machines or terminals.
 
 ---
 
-#### **Admin Panel**
-1. **Login Page**
-2. **Home / Dashboard**
-   - Displays specific companies managed by the Admin.
-3. **Dashboard (One Company View)**
-   - **Dashboard Main Page ** – Monthly reports:
-     - Total products
-     - Total received items
-     - Total deliveries
-     - Total revenue
+## 🔸 2. Role-Based Access Matrix
 
-4. **Pages**
-   - **Machine Status**
-     - Admin can add, view, and assign machines.
-     - Filed is machine number , employee name, design number.
-     - Assign design number.
-     - Displays machine information in a box format.
-   - **Design Overview**
-     - Displays design data (image-type data).
-   - **Party List**
-     - Fields: Party Code, Name, GST Number, Address, Phone Number.
-   - **Product**
-     - Fields: Product Code, Name, Status.
-   - **Bill Selection**
-     - Types of bills:
-       1. **GST Bill**
-       2. **Non-GST Bill**
-       3. **Delivery Bill**
-   - **Receive Entry**
-     - Two types:
-       1. **Material Bill** – Fields: Party Name, Received Date, Product Name, Quantity, Rate, Amount.
-       2. **Product Bill** – Fields: Party Name,  Received Number , Received Date, Product Name, Design Number, Quantity, Rate, Amount.
-   - **Delivery Entry**
-     - Fields: Party Name,  Received Number , Received Date , Delivery Number , Delivery Date, Product Name, Design Number, Quantity, Rate, Amount.
+| **Feature / Module**   |  Super Admin  |        Admin       |  Assistant  | Employee |
+| ---------------------- | :-----------: | :----------------: | :---------: | :------: |
+| Login                  |       ✔       |          ✔         |      ✔      |     ✔    |
+| Dashboard Access       | All Companies | Assigned Companies | One Company |     ❌    |
+| Company Management     |       ✔       |          ✔         |      ❌      |     ❌    |
+| Machine Add/Edit       |       ✔       |          ✔         |  View-only  |     ❌    |
+| Machine Assignment     |       ✔       |          ✔         | Notify-only |     ❌    |
+| Product Management     |       ✔       |          ✔         |  View-only  |     ❌    |
+| Design Data Management |       ✔       |          ✔         |  View-only  |     ❌    |
+| Party Information      |       ✔       |          ✔         |      ❌      |     ❌    |
+| Bill Generation        |       ✔       |          ✔         |      ❌      |     ❌    |
+| Receive Entry          |       ✔       |          ✔         |  View-only  |     ❌    |
+| Delivery Entry         |       ✔       |          ✔         |  View-only  |     ❌    |
+| Report Viewing         |       ✔       |          ✔         |      ✔      |     ❌    |
 
 ---
 
-#### **Assistant Panel**
-1. **Sign Up Page**
-2. **Login Page**
-3. **Home**
-   - Displays one company dashboard.
-4. **Dashboard**
-   - **Dashboard Main Page** – Monthly reports:
-      - Total products
-      - Total received items
-      - Total deliveries
-      - **Machine Status Section**:
-          - Cards/Lists showing active, inactive, assigned, and unassigned machines.
-          - Indicators like **Active**, **Not Assigned**.
-      - **Design Overview Section**:
-         - Design images and numbers with **assigned** or **unassigned** indicators.
-         - Details about which machines are assigned to which designs.
-     - **Quick Actions**:
-         - Buttons for **View Design Details**, **Notify Admin for Assignment**.
-
-5. **Pages**
-   - **Machine Status**
-     - View-only access.
-     - Assign design number.
-   - **Design Overview**
-     - View-only access.
-   - **Product Entry**
-     - View-only access.
-
-
-
-
-+--------------------------------------------------------------------+
-| ID: EM-101                                              🟢        | 
-|                                                                    | 
-| DST :  D-4582                                                      | 
-| Maintenance Date: 20-Apr-2025                                      | 
-| Employee Name: Aarav Mehta                     Production: 92%     | 
-+--------------------------------------------------------------------+
-
+## 🔸 3. Panel Breakdown
 
 ---
 
-#### **Employee Panel**
-- Minimal access, primarily for operational tasks.
-- No dashboard or management functionality.
+### 📌 **Super Admin Panel**
+
+* **Pages Included:**
+
+  * Login Page
+  * Home / Dashboard (Global stats)
+  * Prime Base Management
+  * Master Settings (GST Config, Billing Modes)
+  * Admin Management
+  * Report Center (All Companies)
+
+* **Dashboard Features:**
+
+  * View stats of all companies with filters (today, weekly, monthly).
+  * Export Reports (PDF/Excel).
+  * Visual cards: Product Total, Machine Count, Revenue, Pending Bills.
+
+* **Prime Base Management Page:**
+
+  * Assign Admins to specific Prime levels.
+  * View mapping:
+
+    * Prime Base Level
+    * Assigned Admin
+    * List of Companies
+
+* **Settings Page (NEW):**
+
+  * Configure:
+
+    * Billing Types (GST/Non-GST)
+    * Product Categories
+    * Design Type Settings
+    * Machine Status Colors
 
 ---
 
-Let me know if you'd like further refinement or any specific adjustments!
+### 📌 **Admin Panel**
+
+* **Pages Included:**
+
+  * Login Page
+  * Dashboard
+  * Machines
+  * Design Overview
+  * Party List
+  * Product Management
+  * Billing
+  * Receive & Delivery Entry
+  * Reports
+
+* **Dashboard Highlights:**
+
+  * Bar chart of monthly product/delivery count.
+  * Cards for: Total Products, Total Revenue, Machine Active %, Delivery Count.
+
+* **Machine Page:**
+
+  * Fields: Machine No., Assigned Employee, Design No.
+  * Box View with status indicators:
+
+    * 🟢 Active
+    * 🔴 Inactive
+    * 🟡 Assigned
+    * ⚫ Not Assigned
+
+* **Design Overview Page:**
+
+  * Design Image Cards with:
+
+    * Design Number
+    * Status: Assigned / Unassigned
+    * Machine Link (if assigned)
+    * "Notify Assistant" button
+
+* **Party List Page:**
+
+  * Fields: Party Code, Party Name, GST No., Address, Phone.
+  * Search + filter by GST availability.
+
+* **Billing Page:**
+
+  * Choose from GST / Non-GST / Delivery bill.
+  * Auto-calculation: Subtotal + GST + Grand Total.
+  * Export & Email Option.
+
+* **Receive Entry:**
+
+  * **Material Bill**:
+
+    * Party Name, Received Date, Product, Quantity, Rate, Amount
+  * **Product Bill**:
+
+    * Party Name, Receive No., Product Name, Design No., Qty, Rate, Amount
+
+* **Delivery Entry Page:**
+
+  * Delivery Number, Date, Linked Received No.
+  * Output PDF option.
+
+---
+
+### 📌 **Assistant Panel**
+
+* **Pages Included:**
+
+  * Sign-Up Page
+  * Login Page
+  * Dashboard
+  * Machine Status (View only)
+  * Design Overview (View only)
+  * Product View (Read only)
+
+* **Dashboard Cards:**
+
+  * Total Products
+  * Total Designs
+  * Machine Status (Graph View)
+  * Quick Notifications
+
+* **New: Notify Admin System**
+
+  * Button to request machine assignment.
+  * Option to add notes (e.g., “Machine 04 not responding”)
+
+---
+
+### 📌 **Employee Panel**
+
+* **Pages Included:**
+
+  * Login Page
+  * Assigned Tasks Page (if needed in future)
+
+* **Usage Flow:**
+
+  * Limited to assigned screens for machine use.
+  * Could be integrated with QR Code-based entry check-ins.
+
+---
+
+## 🔸 4. New Pages (Suggested)
+
+### ✅ **Settings Page (Super Admin only)**
+
+Configure:
+
+* Company Details
+* Bill Format
+* Logo Upload
+* Default GST % settings
+
+---
+
+### ✅ **Notifications Page (All Panels)**
+
+* Admin and Assistant:
+
+  * View system alerts, assignment requests, machine errors
+* Employees:
+
+  * View schedule or maintenance notices
+
+---
+
+### ✅ **Reports Page**
+
+* Filter:
+
+  * Date range, Company, Product
+* Export: PDF, Excel
+* Charts:
+
+  * Product trends
+  * Machine Utilization
+  * Design popularity
+
+---
+
+### ✅ **Support / Help Page**
+
+* User guides for each role
+* Shortcuts
+* Report issue form
+
+---
+
+## 🛠️ UI/UX Suggestions (Design Perspective)
+
+* Use **color-coded cards** to represent active/inactive statuses.
+* Use **modals** for entry forms instead of redirecting pages.
+* Add **hover effects** to design images for better interactivity.
+* Implement **side navigation with collapsible menus** for clarity.
+* Responsive layout for both web and tablet.
+
+---
+
+Let me know if you'd like this formatted into:
+
+* **PDF or Word**
+* **Admin Panel Wireframe Sketch**
+* **Database schema reference**
+* **ER Diagram or UI mockup**
+
+Would you like me to generate a wireframe or visual flow diagram for these panels?
